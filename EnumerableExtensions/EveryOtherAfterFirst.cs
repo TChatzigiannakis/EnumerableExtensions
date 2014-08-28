@@ -18,7 +18,7 @@ namespace EnumerableExtensions
         /// Returns all odd-indexed elements in a sequence.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="items"></param>
+        /// <param name="sequence"></param>
         /// <returns></returns>
         public static IEnumerable<T> EveryOtherAfterFirst<T>(this IEnumerable<T> sequence)
         {
