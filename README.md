@@ -21,5 +21,5 @@
 
 ### License ###
 
-* This is free software, distributed under the MPLv3. For more information, see LICENSE.md
+* This is free software, distributed under the MPLv2. For more information, see LICENSE.md
 * If you would like to obtain it under a different license, feel free to contact me.
