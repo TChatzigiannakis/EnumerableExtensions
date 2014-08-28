@@ -104,6 +104,12 @@ namespace EnumerableExtensions
             if(!firstTime)
                 action.Invoke(previous);
         }
-       
+
+        [Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static IEnumerable<T> Before<T>(this IEnumerable<T> items, T item)
+        {
+            return items.TakeWhile(x => !x.Equals(item));
+        }
     }
 }

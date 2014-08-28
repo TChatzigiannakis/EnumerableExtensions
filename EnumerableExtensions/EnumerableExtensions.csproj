@@ -11,7 +11,7 @@
     <RootNamespace>EnumerableExtensions</RootNamespace>
     <AssemblyName>EnumerableExtensions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
@@ -41,6 +41,11 @@
     <Compile Include="ButFirst.cs" />
     <Compile Include="ButLast.cs" />
     <Compile Include="Corresponding.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="__EnumerableHelpers.cs" />
     <Compile Include="EveryOther.cs" />
     <Compile Include="EveryOtherAfterFirst.cs" />
@@ -68,6 +73,12 @@
     <Compile Include="TakeWhileAndNext.cs" />
     <Compile Include="ToUnarySequence.cs" />
     <Compile Include="Union.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

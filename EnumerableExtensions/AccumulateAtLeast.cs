@@ -37,8 +37,7 @@ namespace EnumerableExtensions
                     sum = sum.OperatorPlus(selector.Invoke(iterator.Current));
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
 
@@ -64,8 +63,8 @@ namespace EnumerableExtensions
                     sum += selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
+
             }
         }
 
@@ -91,8 +90,7 @@ namespace EnumerableExtensions
                     sum += selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
 
@@ -118,8 +116,7 @@ namespace EnumerableExtensions
                     sum += selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
 
@@ -145,8 +142,7 @@ namespace EnumerableExtensions
                     sum += selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
 
@@ -173,8 +169,7 @@ namespace EnumerableExtensions
                     sum += selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
 
@@ -200,8 +195,7 @@ namespace EnumerableExtensions
                     sum += (decimal)selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
 
@@ -228,8 +222,7 @@ namespace EnumerableExtensions
                     sum += selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
 
@@ -255,8 +248,7 @@ namespace EnumerableExtensions
                     sum += (decimal)selector.Invoke(iterator.Current);
                     yield return iterator.Current;
                 }
-                else
-                    throw new InvalidOperationException();
+                else yield break;
             }
         }
     }
