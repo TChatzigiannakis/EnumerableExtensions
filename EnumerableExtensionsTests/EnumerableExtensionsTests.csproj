@@ -64,8 +64,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccumulateAtLeast.cs" />
+    <Compile Include="AfterFirst.cs" />
+    <Compile Include="AllEqual.cs" />
+    <Compile Include="Apply.cs" />
+    <Compile Include="Around.cs" />
+    <Compile Include="BeforeFirst.cs" />
+    <Compile Include="ButFirst.cs" />
+    <Compile Include="ButLast.cs" />
+    <Compile Include="Corresponding.cs" />
+    <Compile Include="EveryOther.cs" />
+    <Compile Include="EveryOtherAfterFirst.cs" />
     <Compile Include="Except.cs" />
+    <Compile Include="FirstOrEmpty.cs" />
+    <Compile Include="ForEach.cs" />
+    <Compile Include="IfNotDefault.cs" />
+    <Compile Include="IndexOf.cs" />
+    <Compile Include="IsPermutationOf.cs" />
+    <Compile Include="LastOrEmpty.cs" />
+    <Compile Include="Mask.cs" />
+    <Compile Include="MoreThanOne.cs" />
+    <Compile Include="NextOf.cs" />
+    <Compile Include="NotOf.cs" />
+    <Compile Include="OnlyOne.cs" />
+    <Compile Include="Paginate.cs" />
+    <Compile Include="PreviousOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Second.cs" />
+    <Compile Include="SequenceEqual.cs" />
+    <Compile Include="Shuffle.cs" />
+    <Compile Include="TakeWhileAndNext.cs" />
+    <Compile Include="ToUnarySequence.cs" />
+    <Compile Include="Union.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

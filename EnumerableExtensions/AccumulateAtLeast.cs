@@ -129,6 +129,33 @@ namespace EnumerableExtensions
         /// <returns></returns>
         /// <param name="sequence"></param>
         /// <param name="threshold"></param>
+        /// <param name="selector"></param>
+        /// <typeparam name="T"></typeparam>
+        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, int threshold, Func<T, byte> selector)
+        {
+            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (selector == null) throw new ArgumentNullException("selector");
+
+            var sum = default(int);
+            var iterator = sequence.GetEnumerator();
+            while (sum < threshold)
+            {
+                if (iterator.MoveNext())
+                {
+                    sum += selector.Invoke(iterator.Current);
+                    yield return iterator.Current;
+                }
+                else
+                    throw new InvalidOperationException();
+            }
+        }
+
+        /// <summary>
+        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+        /// </summary>
+        /// <returns></returns>
+        /// <param name="sequence"></param>
+        /// <param name="threshold"></param>
         /// <param name="epsilon"></param>
         /// <param name="selector"></param>
         /// <typeparam name="T"></typeparam>
