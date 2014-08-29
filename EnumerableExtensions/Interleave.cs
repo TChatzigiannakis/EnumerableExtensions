@@ -73,7 +73,7 @@ namespace EnumerableExtensions
                         yield return defaultValue;
                         yield return iterator2.Current;
                     }
-                    else if (more1 && more2)
+                    else if (more1)
                     {
                         yield return iterator1.Current;
                         yield return iterator2.Current;

@@ -16,7 +16,7 @@ namespace EnumerableExtensions
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Combined with .Type(), returns all elements that are not of a specified type.
+        /// Filters out elements of a given type. Must be followed by an additional operator.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="sequence"></param>
@@ -38,16 +38,124 @@ namespace EnumerableExtensions
             _enumerable = e;
         }
 
-        public IEnumerable<T> Type<TRes>()
+        public IEnumerable<T> Type<TRemove>()
         {
-            return _enumerable.Where(x => !(x is TRes));
+            return _enumerable
+                .Except(x => x is TRemove);
+        }
+        public IEnumerable<T> Type<TRemoveA, TRemoveB>()
+        {
+            return _enumerable
+                .Except(x => x is TRemoveA)
+                .Except(x => x is TRemoveB);
+        }
+        public IEnumerable<T> Type<TRemoveA, TRemoveB, TRemoveC>()
+        {
+            return _enumerable
+                .Except(x => x is TRemoveA)
+                .Except(x => x is TRemoveB)
+                .Except(x => x is TRemoveC);
+        }
+
+
+        public IEnumerable<T> ExactType<TRemove>()
+        {
+            return _enumerable
+                .Except(x => x.GetType() == typeof (TRemove));
+        }
+        public IEnumerable<T> ExactType<TRemoveA, TRemoveB>()
+        {
+            return _enumerable
+                .Except(x => x.GetType() == typeof(TRemoveA))
+                .Except(x => x.GetType() == typeof(TRemoveB));
+        }
+        public IEnumerable<T> ExactType<TRemoveA, TRemoveB, TRemoveC>()
+        {
+            return _enumerable
+                .Except(x => x.GetType() == typeof (TRemoveA))
+                .Except(x => x.GetType() == typeof (TRemoveB))
+                .Except(x => x.GetType() == typeof (TRemoveC));
+        }
+
+
+        public IEnumerable<T> AnyClassType()
+        {
+            return _enumerable
+                .Except(x => x.GetType().IsClass);
+        }
+        public IEnumerable<T> AnyStructType()
+        {
+            return _enumerable
+                .Except(x => x.GetType().IsValueType);
         }
     }
 
+    /// <summary>
+    /// Intermediate object to aid in removing elements by type.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface ITypeRemovingEnumerable<out T> : IFluentInterface
-    {
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        IEnumerable<T> Type<TRes>();
+    {        
+        /// <summary>
+        /// Filters out all elements that can be assigned to the given type.
+        /// </summary>
+        /// <typeparam name="TRemove"></typeparam>
+        /// <returns></returns>
+        IEnumerable<T> Type<TRemove>();
+
+        /// <summary>
+        /// Filters out all elements that can be assigned to any of the given types.
+        /// </summary>
+        /// <typeparam name="TRemoveA"></typeparam>
+        /// <typeparam name="TRemoveB"></typeparam>
+        /// <returns></returns>
+        IEnumerable<T> Type<TRemoveA, TRemoveB>();
+
+        /// <summary>
+        /// Filters out all elements that can be assigned to any of the given types.
+        /// </summary>
+        /// <typeparam name="TRemoveA"></typeparam>
+        /// <typeparam name="TRemoveB"></typeparam>
+        /// <typeparam name="TRemoveC"></typeparam>
+        /// <returns></returns>
+        IEnumerable<T> Type<TRemoveA, TRemoveB, TRemoveC>();
+
+        /// <summary>
+        /// Filters out all elements that are exactly of the given type.
+        /// </summary>
+        /// <typeparam name="TRemove"></typeparam>
+        /// <returns></returns>
+        IEnumerable<T> ExactType<TRemove>();
+
+        /// <summary>
+        /// Filters out all elements that are exactly of one of the given types.
+        /// </summary>
+        /// <typeparam name="TRemoveA"></typeparam>
+        /// <typeparam name="TRemoveB"></typeparam>
+        /// <returns></returns>
+        IEnumerable<T> ExactType<TRemoveA, TRemoveB>();
+
+        /// <summary>
+        /// Filters out all elements that are exactly of one of the given types.
+        /// </summary>
+        /// <typeparam name="TRemoveA"></typeparam>
+        /// <typeparam name="TRemoveB"></typeparam>
+        /// <typeparam name="TRemoveC"></typeparam>
+        /// <returns></returns>
+        IEnumerable<T> ExactType<TRemoveA, TRemoveB, TRemoveC>();
+
+        /// <summary>
+        /// Filters out all elements that are instances of a class.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<T> AnyClassType();
+
+        /// <summary>
+        /// Filters out all elements that are instances of a struct.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<T> AnyStructType();
+
     }
 }
