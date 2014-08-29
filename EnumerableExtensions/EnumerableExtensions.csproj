@@ -40,7 +40,9 @@
     <Compile Include="Around.cs" />
     <Compile Include="ButFirst.cs" />
     <Compile Include="ButLast.cs" />
+    <Compile Include="Concat.cs" />
     <Compile Include="Corresponding.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

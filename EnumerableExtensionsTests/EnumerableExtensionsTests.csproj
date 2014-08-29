@@ -71,6 +71,7 @@
     <Compile Include="BeforeFirst.cs" />
     <Compile Include="ButFirst.cs" />
     <Compile Include="ButLast.cs" />
+    <Compile Include="Concat.cs" />
     <Compile Include="Corresponding.cs" />
     <Compile Include="EveryOther.cs" />
     <Compile Include="EveryOtherAfterFirst.cs" />
