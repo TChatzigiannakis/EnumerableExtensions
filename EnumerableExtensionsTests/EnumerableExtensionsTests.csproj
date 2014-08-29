@@ -80,6 +80,7 @@
     <Compile Include="ForEach.cs" />
     <Compile Include="IfNotDefault.cs" />
     <Compile Include="IndexOf.cs" />
+    <Compile Include="Interleave.cs" />
     <Compile Include="IsPermutationOf.cs" />
     <Compile Include="LastOrEmpty.cs" />
     <Compile Include="Mask.cs" />

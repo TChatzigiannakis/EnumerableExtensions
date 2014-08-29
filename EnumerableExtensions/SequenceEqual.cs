@@ -46,7 +46,6 @@ namespace EnumerableExtensions
             return true;
         }
 
-        [Obsolete("Use the overload of SequenceEqual with the exact same arguments.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static bool MapsTo<T1, T2>(this IEnumerable<T1> items, IEnumerable<T2> other, Func<T1, T2, bool> predicate)
         {

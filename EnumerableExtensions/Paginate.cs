@@ -28,5 +28,32 @@ namespace EnumerableExtensions
 
             return sequence.Skip(skipCount).Take(takeCount);
         }
+
+        /// <summary>
+        /// Returns a sequence of sequences, each inner sequence containing a specified number of elements at most. Every page is individually enumerated before it is returned.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sequence"></param>
+        /// <param name="pageLength"></param>
+        /// <returns></returns>
+        public static IEnumerable<IEnumerable<T>> Paginate<T>(this IEnumerable<T> sequence, int pageLength)
+        {
+            if (sequence == null) throw new ArgumentNullException("sequence");
+
+            using (var iterator = sequence.GetEnumerator())
+            {
+                var list = new List<T>();
+                while (iterator.MoveNext())
+                {
+                    list.Add(iterator.Current);
+                    if (list.Count != pageLength) continue;
+
+                    yield return list;
+                    list = new List<T>();
+                }
+                if (list.Any()) 
+                    yield return list;
+            }
+        }
     }
 }

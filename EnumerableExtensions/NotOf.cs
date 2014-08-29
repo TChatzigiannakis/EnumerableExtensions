@@ -21,7 +21,7 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         /// <param name="sequence"></param>
         /// <returns></returns>
-        public static TypeRemovingEnumerable<T> NotOf<T>(this IEnumerable<T> sequence)
+        public static ITypeRemovingEnumerable<T> NotOf<T>(this IEnumerable<T> sequence)
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
 
@@ -29,12 +29,7 @@ namespace EnumerableExtensions
         }
     }
 
-    /// <summary>
-    /// A helper type returned by the NotOf() extension method, to support the NotOf().Type() syntax.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public class TypeRemovingEnumerable<T>
+    internal class TypeRemovingEnumerable<T> : ITypeRemovingEnumerable<T>
     {
         private readonly IEnumerable<T> _enumerable;
 
@@ -43,14 +38,16 @@ namespace EnumerableExtensions
             _enumerable = e;
         }
 
-        /// <summary>
-        /// Returns all items that don't match the given type.
-        /// </summary>
-        /// <typeparam name="TRes"></typeparam>
-        /// <returns></returns>
         public IEnumerable<T> Type<TRes>()
         {
             return _enumerable.Where(x => !(x is TRes));
         }
+    }
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public interface ITypeRemovingEnumerable<out T> : IFluentInterface
+    {
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        IEnumerable<T> Type<TRes>();
     }
 }

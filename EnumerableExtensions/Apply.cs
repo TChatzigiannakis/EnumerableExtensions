@@ -21,12 +21,10 @@ namespace EnumerableExtensions
         /// <param name="sequence"></param>
         /// <param name="action"></param>
         /// <typeparam name="T"></typeparam>
-        public static ActionApplyingEnumerable<T> Apply<T>(this IEnumerable<T> sequence, Action<T> action)
+        public static IActionApplyingEnumerable<T> Apply<T>(this IEnumerable<T> sequence, Action<T> action)
         {
-            if (sequence == null)
-                throw new ArgumentNullException("sequence");
-            if (action == null)
-                throw new ArgumentNullException("action");
+            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (action == null) throw new ArgumentNullException("action");
 
             return new ActionApplyingEnumerable<T>(sequence, action);
         }
@@ -36,10 +34,9 @@ namespace EnumerableExtensions
         /// </summary>
         /// <param name="sequence"></param>
         /// <typeparam name="T"></typeparam>
-        public static void ToAll<T>(this ActionApplyingEnumerable<T> sequence)
+        public static void ToAll<T>(this IActionApplyingEnumerable<T> sequence)
         {
-            if (sequence == null)
-                throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException("sequence");
 
             foreach (var a in sequence.Sequence)
                 sequence.Action.Invoke(a);
@@ -50,10 +47,9 @@ namespace EnumerableExtensions
         /// </summary>
         /// <param name="sequence"></param>
         /// <typeparam name="T"></typeparam>
-        public static void ToAllExceptLast<T>(this ActionApplyingEnumerable<T> sequence)
+        public static void ToAllExceptLast<T>(this IActionApplyingEnumerable<T> sequence)
         {
-            if (sequence == null)
-                throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException("sequence");
 
             foreach (var a in sequence.Sequence.ButLast())
                 sequence.Action.Invoke(a);
@@ -65,10 +61,9 @@ namespace EnumerableExtensions
         /// <param name="sequence">Items.</param>
         /// <param name="action">Action.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static void ToAllAndThenApplyToLast<T>(this ActionApplyingEnumerable<T> sequence, Action<T> action)
+        public static void ToAllAndThenApplyToLast<T>(this IActionApplyingEnumerable<T> sequence, Action<T> action)
         {
-            if (sequence == null)
-                throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException("sequence");
 
             var outer = default(T);
             foreach (var a in sequence.Sequence)
@@ -85,10 +80,9 @@ namespace EnumerableExtensions
         /// <param name="sequence"></param>
         /// <param name="action"></param>
         /// <typeparam name="T"></typeparam>
-        public static void ToAllWithDifferentLast<T>(this ActionApplyingEnumerable<T> sequence, Action<T> action)
+        public static void ToAllWithDifferentLast<T>(this IActionApplyingEnumerable<T> sequence, Action<T> action)
         {
-            if (sequence == null)
-                throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException("sequence");
 
             var collection = sequence.Sequence.ToList();
 
@@ -99,16 +93,25 @@ namespace EnumerableExtensions
         }
     }
 
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public class ActionApplyingEnumerable<T>
+    internal class ActionApplyingEnumerable<T> : IActionApplyingEnumerable<T>
     {
-        internal IEnumerable<T> Sequence { get; private set; }
-        internal Action<T> Action { get; private set; }
+        public IEnumerable<T> Sequence { get; private set; }
+        public Action<T> Action { get; private set; }
 
         public ActionApplyingEnumerable(IEnumerable<T> sequence, Action<T> action)
         {
             Sequence = sequence;
             Action = action;
         }
+    }
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public interface IActionApplyingEnumerable<T> : IFluentInterface
+    {
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        IEnumerable<T> Sequence { get; }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Action<T> Action { get; }
     }
 }

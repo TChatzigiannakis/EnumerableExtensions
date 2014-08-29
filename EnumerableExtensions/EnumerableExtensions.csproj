@@ -43,6 +43,10 @@
     <Compile Include="Concat.cs" />
     <Compile Include="Corresponding.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Enumerate.cs" />
+    <Compile Include="IFluentInterface.cs" />
+    <Compile Include="Interleave.cs" />
+    <Compile Include="TakeAndPad.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +85,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
