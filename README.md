@@ -21,5 +21,8 @@
 
 ### License ###
 
-* This is free software, distributed under the MPLv2. For more information, see LICENSE.md
-* If you would like to obtain it under a different license, feel free to contact me.
+* This is free and open source software. 
+* Each source file is subject to its own free software license (Mozilla Public License v2 or Apache License v2), as indicated by its header individually.
+* Any source files not containing a license notice are distributed under the Mozilla Public License v2.
+* You can find a copy of the Mozilla Public License v2 in the LICENSE.md file.
+* If you would like to obtain this software under a different license, feel free to contact me.
