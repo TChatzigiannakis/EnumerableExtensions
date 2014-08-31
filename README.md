@@ -23,6 +23,5 @@
 
 * This is free and open source software. 
 * Each source file is subject to its own free software license (Mozilla Public License v2 or Apache License v2), as indicated by its header individually.
-* Any source files not containing a license notice are distributed under the Mozilla Public License v2.
-* You can find a copy of the Mozilla Public License v2 in the LICENSE.md file.
+* Any source files not containing a license notice are distributed under the Mozilla Public License v2, a copy of which you can find in the LICENSE file.
 * If you would like to obtain this software under a different license, feel free to contact me.
