@@ -22,7 +22,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> ToUnarySequence<T>(this T item)
         {
-            return new[] { item };
+            yield return item;
         }
     }
 }

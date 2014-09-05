@@ -15,15 +15,15 @@ namespace EnumerableExtensions
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Enumerate the sequence before continuing.
+        /// Immediately enumerates the sequence without returning any result.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="sequence"></param>
-        public static IEnumerable<T> Enumerate<T>(this IEnumerable<T> sequence)
+        public static void Consume<T>(this IEnumerable<T> sequence)
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
 
-            return sequence.ToList();
+            sequence.Enumerate();
         }
     }
 }
