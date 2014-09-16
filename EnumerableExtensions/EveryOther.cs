@@ -27,5 +27,20 @@ namespace EnumerableExtensions
             var index = 0;
             return sequence.Where(n => index++ % 2 == 0);
         }
+
+        /// <summary>        
+        /// Returns the firth, third, fifth (etc) element that satisfies a specified constraint.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sequence"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> EveryOther<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
+        {
+            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (predicate == null) throw new ArgumentNullException("predicate");
+
+            return sequence.Where(predicate).EveryOther();
+        }
     }
 }
