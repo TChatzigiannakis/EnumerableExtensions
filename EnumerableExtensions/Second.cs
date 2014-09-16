@@ -24,7 +24,7 @@ namespace EnumerableExtensions
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
 
-            return sequence.Skip(1).First();
+            return sequence.ElementAt(1);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace EnumerableExtensions
             if (sequence == null) throw new ArgumentNullException("sequence");
             if (predicate == null) throw new ArgumentNullException("predicate");
 
-            return sequence.Where(predicate.Invoke).Skip(1).First();
+            return sequence.Where(predicate.Invoke).Second();
         }
     }
 }
