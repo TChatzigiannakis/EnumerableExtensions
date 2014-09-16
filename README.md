@@ -1,5 +1,7 @@
 # README #
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0s8ubdu1twm2d00q)](https://ci.appveyor.com/project/TChatzigiannakis/enumerableextensions)
+
 ### What is this repository for? ###
 
 * Source code for EnumerableExtensions, a portable class library (PCL) offering extension methods for IEnumerable<T> in C#, mostly following the spirit of the existing LINQ methods (and overloading them wherever applicable).
