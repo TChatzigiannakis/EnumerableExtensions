@@ -26,20 +26,12 @@ namespace EnumerableExtensions
 
             using (var iterator = sequence.GetEnumerator())
             {
-                var firstTime = true;
-                var previous = default(T);
+                if (!iterator.MoveNext()) yield break;
+                var previous = iterator.Current;
                 while (iterator.MoveNext())
                 {
-                    if (firstTime)
-                    {
-                        previous = iterator.Current;
-                        firstTime = false;
-                    }
-                    else
-                    {
-                        yield return previous;
-                        previous = iterator.Current;
-                    }
+                    yield return previous;
+                    previous = iterator.Current;
                 }
             }
         }
