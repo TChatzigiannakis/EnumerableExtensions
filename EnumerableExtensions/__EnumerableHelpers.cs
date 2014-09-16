@@ -105,6 +105,13 @@ namespace EnumerableExtensions
                 action.Invoke(previous);
         }
 
+        /// <summary>
+        /// Returns all elements until (and excluding) the specified.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
         [Obsolete]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static IEnumerable<T> Before<T>(this IEnumerable<T> items, T item)
