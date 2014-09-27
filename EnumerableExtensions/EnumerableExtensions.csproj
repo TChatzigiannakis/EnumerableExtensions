@@ -47,6 +47,7 @@
     <Compile Include="Distinct.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Enumerate.cs" />
+    <Compile Include="Flatten.cs" />
     <Compile Include="IFluentInterface.cs" />
     <Compile Include="Interleave.cs" />
     <Compile Include="TakeAndPad.cs" />
