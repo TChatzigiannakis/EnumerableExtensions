@@ -79,6 +79,7 @@
     <Compile Include="EveryOtherAfterFirst.cs" />
     <Compile Include="Except.cs" />
     <Compile Include="FirstOrEmpty.cs" />
+    <Compile Include="Flatten.cs" />
     <Compile Include="ForEach.cs" />
     <Compile Include="IfNotDefault.cs" />
     <Compile Include="IndexOf.cs" />
