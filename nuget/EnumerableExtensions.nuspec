@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>EnumerableExtensions</id>
+        <version>2.1.0.0</version>
+        <title>Enumerable Extensions</title>
+        <authors>Theodoros Chatzigiannakis</authors>
+        <licenseUrl>http://www.mozilla.org/MPL/2.0/</licenseUrl>
+        <projectUrl>https://bitbucket.org/TChatzigiannakis/enumerableextensions</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Extension methods for IEnumerable&lt;T&gt;, including ForEach(), Apply() operators, Around(), Mask(), TakeWhileAndNext(), FirstOrEmpty(), Interleave() operators, NotOf() (type-removing) operators and more.</description>
+        <releaseNotes>Cartesian(), Consume() and some Distinct() overloads that take lambdas.</releaseNotes>
+        <copyright>Copyright (C) 2014  Theodoros Chatzigiannakis</copyright>
+        <language />
+        <tags>C# LINQ IEnumerable</tags>
+    </metadata>
+	<files>
+		<file src="..\EnumerableExtensions\bin\Release\EnumerableExtensions.dll" target="lib/portable-net4+sl5+wp8+win8" />
+		<file src="..\EnumerableExtensions\bin\Release\EnumerableExtensions.xml" target="lib/portable-net4+sl5+wp8+win8" />
+	</files>
+</package>
