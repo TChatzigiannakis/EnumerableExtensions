@@ -9,7 +9,7 @@
         <projectUrl>https://bitbucket.org/TChatzigiannakis/enumerableextensions</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Extension methods for IEnumerable&lt;T&gt;, including ForEach(), Apply() operators, Around(), Mask(), TakeWhileAndNext(), FirstOrEmpty(), Interleave() operators, NotOf() (type-removing) operators and more.</description>
-        <releaseNotes>Cartesian(), Consume() and some Distinct() overloads that take lambdas.</releaseNotes>
+        <releaseNotes></releaseNotes>
         <copyright>Copyright (C) 2014  Theodoros Chatzigiannakis</copyright>
         <language />
         <tags>C# LINQ IEnumerable</tags>
