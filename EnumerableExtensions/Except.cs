@@ -38,8 +38,20 @@ namespace EnumerableExtensions
         public static IEnumerable<T> Except<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
+            if (predicate == null) throw new ArgumentNullException("predicate");
 
             return sequence.Where(x => !predicate.Invoke(x));
+        }
+
+        /// <summary>
+        /// Returns all elements in a sequence that do not satisfy a specified condition. Each element's index is used in the logic of the predicate function.
+        /// </summary>
+        public static IEnumerable<T> Except<T>(this IEnumerable<T> sequence, Func<T, int, bool> predicate)
+        {
+            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (predicate == null) throw new ArgumentNullException("predicate");
+
+            return sequence.Where((x, i) => !predicate.Invoke(x, i));
         }
     }
 }
