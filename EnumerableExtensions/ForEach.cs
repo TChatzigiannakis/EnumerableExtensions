@@ -28,5 +28,24 @@ namespace EnumerableExtensions
             foreach (var p in sequence)
                 action.Invoke(p);
         }
+
+        /// <summary>
+        ///  Applies an action to all elements. Each element's index is used in the logic of the action.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sequence"></param>
+        /// <param name="action"></param>
+        public static void ForEach<T>(this IEnumerable<T> sequence, Action<T, int> action)
+        {
+            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (action == null) throw new ArgumentNullException("action");
+
+            var index = 0;
+            foreach (var p in sequence)
+            {
+                action.Invoke(p, index);
+                index++;
+            }
+        }
     }
 }
