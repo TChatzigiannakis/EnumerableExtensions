@@ -45,11 +45,13 @@
     <Compile Include="Consume.cs" />
     <Compile Include="Corresponding.cs" />
     <Compile Include="Distinct.cs" />
+    <Compile Include="IsEmpty.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Enumerate.cs" />
     <Compile Include="Flatten.cs" />
     <Compile Include="IFluentInterface.cs" />
     <Compile Include="Interleave.cs" />
+    <Compile Include="Permutations.cs" />
     <Compile Include="TakeAndPad.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

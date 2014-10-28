@@ -92,6 +92,7 @@
     <Compile Include="NotOf.cs" />
     <Compile Include="OnlyOne.cs" />
     <Compile Include="Paginate.cs" />
+    <Compile Include="Permutations.cs" />
     <Compile Include="PreviousOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Second.cs" />
