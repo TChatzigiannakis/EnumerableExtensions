@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>EnumerableExtensions</id>
-        <version>2.3</version>
+        <version>2.4</version>
         <title>Enumerable Extensions</title>
         <authors>Theodoros Chatzigiannakis</authors>
         <licenseUrl>http://www.mozilla.org/MPL/2.0/</licenseUrl>
         <projectUrl>https://bitbucket.org/TChatzigiannakis/enumerableextensions</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Extension methods for IEnumerable&lt;T&gt;, including ForEach(), Apply() operators, Around(), Mask(), TakeWhileAndNext(), FirstOrEmpty(), Interleave() operators, NotOf() (type-removing) operators and more.</description>
+        <description>Extension methods for IEnumerable&lt;T&gt;, including ForEach(), Apply() operators, Around(), Mask(), TakeWhileAndNext(), FirstOrEmpty(), Permutations(), Interleave() operators, NotOf() (type-removing) operators and more.</description>
         <releaseNotes></releaseNotes>
         <copyright>Copyright (C) 2014  Theodoros Chatzigiannakis</copyright>
         <language />
