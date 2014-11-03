@@ -76,8 +76,7 @@ namespace EnumerableExtensions
                 .Except(x => x.GetType() == typeof (TRemoveB))
                 .Except(x => x.GetType() == typeof (TRemoveC));
         }
-
-
+        
         public IEnumerable<T> AnyClassType()
         {
             return _enumerable

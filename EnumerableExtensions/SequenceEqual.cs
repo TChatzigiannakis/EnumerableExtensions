@@ -46,6 +46,15 @@ namespace EnumerableExtensions
             return true;
         }
 
+        /// <summary>
+        /// Determines whether a specified condition is always satisfied when applied to corresponding elements of two sequences.
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="other"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static bool MapsTo<T1, T2>(this IEnumerable<T1> items, IEnumerable<T2> other, Func<T1, T2, bool> predicate)
         {

@@ -129,12 +129,22 @@ namespace EnumerableExtensions
         }
     }
 
+    /// <summary>
+    /// Represents two sequences to be enumerated in an interleaved fashion.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IInterleavingEnumerable<out T> : IFluentInterface
     {
+        /// <summary>
+        /// Represents the first sequence.
+        /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
         IEnumerable<T> SequenceOne { get; }
 
+        /// <summary>
+        /// Represents the second sequence.
+        /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
         IEnumerable<T> SequenceTwo { get; }
     }

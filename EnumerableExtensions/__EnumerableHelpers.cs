@@ -13,6 +13,9 @@ using System.Linq;
 
 namespace EnumerableExtensions
 {
+    /// <summary>
+    /// Version 1 methods.
+    /// </summary>
     [Obsolete("All functionality is now in the EnumerableExtensions class.")]
     public static class __EnumerableHelpers
     {               

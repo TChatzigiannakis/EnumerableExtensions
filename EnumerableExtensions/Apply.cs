@@ -105,12 +105,22 @@ namespace EnumerableExtensions
         }
     }
 
+    /// <summary>
+    /// Represents a sequence and an action to be applied to its elements.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IActionApplyingEnumerable<T> : IFluentInterface
     {
+        /// <summary>
+        /// Represents the sequence.
+        /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
         IEnumerable<T> Sequence { get; }
 
+        /// <summary>
+        /// Represents the action.
+        /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
         Action<T> Action { get; }
     }
