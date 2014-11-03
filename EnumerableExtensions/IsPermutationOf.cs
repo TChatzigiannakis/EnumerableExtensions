@@ -22,7 +22,6 @@ namespace EnumerableExtensions
         /// <param name="second"></param>
         /// <returns></returns>
         public static bool IsPermutationOf<T>(this IEnumerable<T> sequence, IEnumerable<T> second)
-            where T : struct
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
             if (second == null) throw new ArgumentNullException("second");
