@@ -85,6 +85,7 @@
     <Compile Include="TakeWhileAndNext.cs" />
     <Compile Include="ToUnarySequence.cs" />
     <Compile Include="Union.cs" />
+    <Compile Include="RemoveDefaults.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
