@@ -14,7 +14,8 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         public static IEnumerable<T> RemoveDefaults<T>(this IEnumerable<T> sequence) 
         {
-            return sequence.Except (x => x.Equals (default(T)));
+            if(typeof(T).IsValueType) return sequence.Except (x => x.Equals (default(T)));
+            return RemoveNull<T> (sequence);
         }
 
         /// <summary>
@@ -24,9 +25,8 @@ namespace EnumerableExtensions
         /// <param name="sequence"></param>
         /// <typeparam name="T"></typeparam>
         public static IEnumerable<T> RemoveNull<T>(this IEnumerable<T> sequence) 
-            where T : class
         {
-            return sequence.Except (x => x.Equals (null));
+            return sequence.Except (x => object.ReferenceEquals(x, null));
         }
 
         /// <summary>
@@ -38,8 +38,9 @@ namespace EnumerableExtensions
         public static IEnumerable<T> RemoveIndividualDefaults<T>(this IEnumerable<T> sequence)
         {
             return sequence.Except (x => {
-                if(!x.GetType().IsValueType) return x.Equals(null);
-                else return x.Equals(Activator.CreateInstance(x.GetType()));
+                if(object.ReferenceEquals(x, null)) return true;
+                if(!x.GetType().IsValueType) return false;
+                return x.Equals(Activator.CreateInstance(x.GetType()));
             });
         }
     }
