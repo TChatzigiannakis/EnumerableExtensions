@@ -23,7 +23,9 @@ namespace EnumerableExtensions
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
 
-            sequence.Enumerate();
+            T value;
+            foreach (var a in sequence)
+                value = a;
         }
     }
 }
