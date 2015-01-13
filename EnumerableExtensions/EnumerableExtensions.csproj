@@ -52,6 +52,7 @@
     <Compile Include="IFluentInterface.cs" />
     <Compile Include="Interleave.cs" />
     <Compile Include="Permutations.cs" />
+    <Compile Include="SkipLast.cs" />
     <Compile Include="TakeAndPad.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
