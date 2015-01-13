@@ -94,6 +94,7 @@
     <Compile Include="Second.cs" />
     <Compile Include="SequenceEqual.cs" />
     <Compile Include="Shuffle.cs" />
+    <Compile Include="TakeLast.cs" />
     <Compile Include="TakeWhileAndNext.cs" />
     <Compile Include="ToUnarySequence.cs" />
     <Compile Include="Union.cs" />

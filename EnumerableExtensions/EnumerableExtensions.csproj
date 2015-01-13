@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TakeLast.cs" />
     <Compile Include="__EnumerableHelpers.cs" />
     <Compile Include="EveryOther.cs" />
     <Compile Include="EveryOtherAfterFirst.cs" />
