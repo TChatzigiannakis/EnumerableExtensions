@@ -68,12 +68,14 @@ namespace EnumerableExtensions
             if (sequence == null) throw new ArgumentNullException("sequence");
 
             var outer = default(T);
+            var any = false;
             foreach (var a in sequence.Sequence)
             {
                 outer = a;
                 sequence.Action.Invoke(a);
+                any = true;
             }
-            action.Invoke(outer);
+            if(any) action.Invoke(outer);
         }
 
         /// <summary>
@@ -86,12 +88,18 @@ namespace EnumerableExtensions
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
 
-            var collection = sequence.Sequence.ToList();
-
-            foreach (var a in collection.ButLast())
-                sequence.Action.Invoke(a);
-
-            action.Invoke(collection.Last());
+            using (var iterator = sequence.Sequence.GetEnumerator())
+            {
+                var previous = default(T);
+                var any = false;
+                while (iterator.MoveNext())
+                {
+                    if(any) sequence.Action.Invoke(previous);
+                    previous = iterator.Current;
+                    any = true;
+                }
+                if(any) action.Invoke(previous);
+            }
         }
     }
 
