@@ -71,6 +71,7 @@
     <Compile Include="Concat.cs" />
     <Compile Include="Corresponding.cs" />
     <Compile Include="Distinct.cs" />
+    <Compile Include="DistinctAdjacent.cs" />
     <Compile Include="EveryOther.cs" />
     <Compile Include="EveryOtherAfterFirst.cs" />
     <Compile Include="Except.cs" />
