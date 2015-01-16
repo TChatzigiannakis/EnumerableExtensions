@@ -16,6 +16,8 @@ namespace EnumerableExtensions
 {
     public static partial class EnumerableExtensions
     {
+        // ReSharper disable PossibleMultipleEnumeration
+
         /// <summary>
         /// Returns every combination of elements from two given sequences.
         /// </summary>
@@ -29,13 +31,21 @@ namespace EnumerableExtensions
             if (sequence == null) throw new ArgumentNullException("sequence");
             if (second == null) throw new ArgumentNullException("second");
 
-            var secondEnumerated = second.ToList();
-
-            return 
-                from e1 in sequence                
-                from e2 in secondEnumerated
+            return
+                from e1 in sequence
+                from e2 in second
                 select new Tuple<T1, T2>(e1, e2);
-            
+        }
+
+        /// <summary>
+        /// Returns every combination of two elements of the given sequence.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sequence"></param>
+        /// <returns></returns>
+        public static IEnumerable<Tuple<T, T>> Cartesian<T>(this IEnumerable<T> sequence)
+        {
+            return sequence.Cartesian(sequence);
         }
     }
 }
