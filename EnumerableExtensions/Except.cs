@@ -27,7 +27,10 @@ namespace EnumerableExtensions
         {
             if (sequence == null) throw new ArgumentNullException("sequence");
 
-            return sequence.Except(new[] { exception });
+            // ReSharper disable once CompareNonConstrainedGenericWithNull
+            if (default(T) == null) return sequence.Except(x => object.ReferenceEquals(x, null));            
+
+            return sequence.Except(x => exception.Equals(x));
         }
 
         /// <summary>
