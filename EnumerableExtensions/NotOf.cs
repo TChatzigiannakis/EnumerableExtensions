@@ -81,13 +81,17 @@ namespace EnumerableExtensions
         
         public IEnumerable<T> AnyClassType()
         {
-            return _enumerable
-                .Except(x => x.GetType().IsClass);
+            return _enumerable.Except(x => x.GetType().IsClass);
         }
+
         public IEnumerable<T> AnyStructType()
         {
-            return _enumerable
-                .Except(x => x.GetType().IsValueType);
+            return _enumerable.Except(x => x.GetType().IsValueType);
+        }
+
+        public IEnumerable<T> AnyEnumType()
+        {
+            return _enumerable.Except(x => x.GetType().IsEnum);
         }
     }
 
@@ -158,5 +162,10 @@ namespace EnumerableExtensions
         /// <returns></returns>
         IEnumerable<T> AnyStructType();
 
+        /// <summary>
+        /// Filters out all elements that are instances of an enum.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<T> AnyEnumType();
     }
 }
