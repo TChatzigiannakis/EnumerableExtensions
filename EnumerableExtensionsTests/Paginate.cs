@@ -69,5 +69,11 @@ namespace EnumerableExtensionsTests
             Assert.AreEqual(5, seq[1].ElementAt(1));
             Assert.AreEqual(6, seq[1].ElementAt(2));
         }
+
+	    [Test]
+	    public void PaginateNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>) null).Paginate(3); });
+		}
     }
 }

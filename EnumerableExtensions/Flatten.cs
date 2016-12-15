@@ -24,7 +24,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             return sequence.SelectMany(x => x);
         }

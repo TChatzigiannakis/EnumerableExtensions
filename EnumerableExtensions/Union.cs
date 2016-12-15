@@ -23,9 +23,6 @@ namespace EnumerableExtensions
         /// <param name="items"></param>
         /// <param name="newElement"></param>
         /// <returns></returns>
-        public static IEnumerable<T> Union<T>(this IEnumerable<T> items, T newElement)
-        {
-            return items.Union(newElement.ToUnarySequence());
-        }
+        public static IEnumerable<T> Union<T>(this IEnumerable<T> items, T newElement) => items.Union(newElement.ToUnarySequence());
     }
 }

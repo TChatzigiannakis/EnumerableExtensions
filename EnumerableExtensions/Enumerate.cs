@@ -23,7 +23,7 @@ namespace EnumerableExtensions
         /// <param name="sequence"></param>
         public static IEnumerable<T> Enumerate<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             return sequence.ToList();
         }

@@ -32,5 +32,11 @@ namespace EnumerableExtensionsTests
                 Assert.IsTrue(seq.Shuffle().IsPermutationOf(seq));
             }
         }
+
+	    [Test]
+	    public void ShuffleNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>) null).Shuffle(); });
+	    }
     }
 }

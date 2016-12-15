@@ -25,38 +25,48 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Mask<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            foreach (var element in sequence)
-            {
-                if (predicate.Invoke(element))
-                    yield return element;
-                else
-                    yield return default(T);
-            }
+	        return MaskImpl<T>(sequence, predicate);
         }
 
-        /// <summary>
-        /// Returns an IEnumerable where only the items whose zero-based index matches the predicate are present and the rest are replaced by the default value.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="sequence"></param>
-        /// <param name="predicate"></param>
-        /// <returns></returns>
-        public static IEnumerable<T> Mask<T>(this IEnumerable<T> sequence, Func<T, int, bool> predicate)
+	    private static IEnumerable<T> MaskImpl<T>(IEnumerable<T> sequence, Func<T, bool> predicate)
+	    {
+			foreach (var element in sequence)
+			{
+				if (predicate.Invoke(element))
+					yield return element;
+				else
+					yield return default(T);
+			}
+		}
+
+		/// <summary>
+		/// Returns an IEnumerable where only the items whose zero-based index matches the predicate are present and the rest are replaced by the default value.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="sequence"></param>
+		/// <param name="predicate"></param>
+		/// <returns></returns>
+		public static IEnumerable<T> Mask<T>(this IEnumerable<T> sequence, Func<T, int, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            var index = 0;
-            foreach (var element in sequence)
-            {
-                if (predicate.Invoke(element, index++))
-                    yield return element;
-                else
-                    yield return default(T);
-            }
+			return MaskImpl<T>(sequence, predicate);
         }
-    }
+
+	    private static IEnumerable<T> MaskImpl<T>(IEnumerable<T> sequence, Func<T, int, bool> predicate)
+	    {
+			var index = 0;
+			foreach (var element in sequence)
+			{
+				if (predicate.Invoke(element, index++))
+					yield return element;
+				else
+					yield return default(T);
+			}
+		}
+	}
 }

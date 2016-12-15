@@ -28,5 +28,12 @@ namespace EnumerableExtensionsTests
 
             Assert.IsTrue(distinctAdj.SequenceEqual(new[] {0, 1, 2, 3, 4, 2, 5}));
         }
+
+	    [Test]
+	    public void DistinctAdjacentNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>)null).DistinctAdjacent(); });
+			Assert.Throws<ArgumentNullException>(() => { (new[] { 0, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4, 4, 2, 5, 5 }).DistinctAdjacent((Func<int, int, bool>)null); });
+		}
     }
 }

@@ -24,7 +24,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static bool MoreThanOne<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             return sequence.Count() > 1;
         }

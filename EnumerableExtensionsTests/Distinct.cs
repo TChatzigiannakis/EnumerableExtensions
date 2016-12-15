@@ -30,5 +30,12 @@ namespace EnumerableExtensionsTests
             Assert.AreEqual(2, seq[1]);
             Assert.AreEqual(3, seq[2]);
         }
+
+	    [Test]
+	    public void DistinctNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>)null).Distinct((x, y) => Math.Abs(x) == Math.Abs(y)); });
+			Assert.Throws<ArgumentNullException>(() => { new[] { 1, 2, -1, 3, -2, -3 }.Distinct((Func<int, int, bool>)null); });
+		}
     }
 }

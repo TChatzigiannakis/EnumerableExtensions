@@ -26,7 +26,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> TakeAndPad<T>(this IEnumerable<T> sequence, int count, T defaultValue)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             var taken = sequence.Take(count);
             var takenCount = 0;
@@ -47,10 +47,6 @@ namespace EnumerableExtensions
         /// <param name="sequence"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public static IEnumerable<T> TakeAndPad<T>(this IEnumerable<T> sequence, int count)
-        {
-            return sequence.TakeAndPad(count, default(T));
-        }
-
+        public static IEnumerable<T> TakeAndPad<T>(this IEnumerable<T> sequence, int count) => sequence.TakeAndPad(count, default(T));
     }
 }

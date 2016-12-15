@@ -37,5 +37,11 @@ namespace EnumerableExtensionsTests
             var perms = new int[] {}.Permutations();
             Assert.AreEqual(1, perms.Count());
         }
+
+	    [Test]
+	    public void PermutationsNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>) null).Permutations(); });
+	    }
     }
 }

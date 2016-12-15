@@ -34,6 +34,14 @@ namespace EnumerableExtensionsTests
             Assert.AreEqual(-5, interleaving[9]);
         }
 
+	    [Test]
+	    public void InterleaveNull()
+	    {
+			var seq = new[] { 1, 2, 3, 4, 5, 6, 7 };
+			Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>) null).Interleave(seq); });
+			Assert.Throws<ArgumentNullException>(() => { seq.Interleave(((IEnumerable<int>)null)); });
+		}
+
         [Test]
         public void InterleavePadMaximum()
         {

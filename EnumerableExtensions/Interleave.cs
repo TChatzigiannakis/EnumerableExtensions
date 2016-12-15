@@ -26,8 +26,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IInterleavingEnumerable<T> Interleave<T>(this IEnumerable<T> sequence, IEnumerable<T> second)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (second == null) throw new ArgumentNullException("second");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (second == null) throw new ArgumentNullException(nameof(second));
 
             return new InterleavingEnumerable<T>(sequence, second);
         }
@@ -91,12 +91,9 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         /// <param name="sequence"></param>
         /// <returns></returns>
-        public static IEnumerable<T> PadMaximum<T>(this IInterleavingEnumerable<T> sequence)
-        {
-            return sequence.PadMaximum(default(T));
-        }
+        public static IEnumerable<T> PadMaximum<T>(this IInterleavingEnumerable<T> sequence) => sequence.PadMaximum(default(T));
 
-        /// <summary>
+	    /// <summary>
         /// When one of the two source sequences runs out, the remaining elements of the other sequence are returned.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -121,8 +118,8 @@ namespace EnumerableExtensions
 
     internal class InterleavingEnumerable<T> : IInterleavingEnumerable<T>
     {
-        public IEnumerable<T> SequenceOne { get; private set; }
-        public IEnumerable<T> SequenceTwo { get; private set; }
+        public IEnumerable<T> SequenceOne { get; }
+        public IEnumerable<T> SequenceTwo { get; }
 
         public InterleavingEnumerable(IEnumerable<T> sequenceOne, IEnumerable<T> sequenceTwo)
         {

@@ -29,5 +29,11 @@ namespace EnumerableExtensionsTests
             Assert.AreEqual(4, seq.ButLast().Last());
             Assert.AreEqual(0, new int[0].ButLast().Count());
         }
+
+	    [Test]
+	    public void ButLastNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>)null).ButLast(); });
+	    }
     }
 }

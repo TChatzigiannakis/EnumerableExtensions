@@ -24,8 +24,8 @@ namespace EnumerableExtensions
         /// <param name="action"></param>
         public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (action == null) throw new ArgumentNullException("action");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (action == null) throw new ArgumentNullException(nameof(action));
 
             foreach (var p in sequence)
                 action.Invoke(p);
@@ -39,8 +39,8 @@ namespace EnumerableExtensions
         /// <param name="action"></param>
         public static void ForEach<T>(this IEnumerable<T> sequence, Action<T, int> action)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (action == null) throw new ArgumentNullException("action");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (action == null) throw new ArgumentNullException(nameof(action));
 
             var index = 0;
             foreach (var p in sequence)

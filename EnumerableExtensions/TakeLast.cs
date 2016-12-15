@@ -25,7 +25,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> TakeLast<T>(this IEnumerable<T> sequence, int count)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
             if (count <= 0) return new T[0];
 
             var buffer = new T[count];

@@ -26,7 +26,7 @@ namespace EnumerableExtensions
         public static void IfNotDefault<T>(this T item, Action<T> action)
             where T : class
         {
-            if (action == null) throw new ArgumentNullException("action");
+            if (action == null) throw new ArgumentNullException(nameof(action));
 
             if (item != null) action.Invoke(item);
         }

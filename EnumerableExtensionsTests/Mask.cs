@@ -32,5 +32,12 @@ namespace EnumerableExtensionsTests
             Assert.AreEqual(0, seq[3]);
             Assert.AreEqual(0, seq[4]);
         }
+
+	    [Test]
+	    public void MaskNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>) null).Mask(x => x < 3); });
+			Assert.Throws<ArgumentNullException>(() => { new[] {1, 2, 3, 4, 5}.Mask((Func<int, bool>)null); });
+		}
     }
 }

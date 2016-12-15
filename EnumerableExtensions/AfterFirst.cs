@@ -25,8 +25,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> AfterFirst<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return sequence.SkipWhile(x => !predicate.Invoke(x)).Skip(1);
         }

@@ -23,9 +23,6 @@ namespace EnumerableExtensions
         /// <param name="sequence"></param>
         /// <param name="element"></param>
         /// <returns></returns>
-        public static IEnumerable<T> Concat<T>(this IEnumerable<T> sequence, T element)
-        {
-            return sequence.Concat(element.ToUnarySequence());
-        }
+        public static IEnumerable<T> Concat<T>(this IEnumerable<T> sequence, T element) => sequence.Concat(element.ToUnarySequence());
     }
 }

@@ -28,8 +28,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<Tuple<T1, T2>> Cartesian<T1, T2>(this IEnumerable<T1> sequence, IEnumerable<T2> second)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (second == null) throw new ArgumentNullException("second");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (second == null) throw new ArgumentNullException(nameof(second));
 
             return
                 from e1 in sequence
@@ -43,9 +43,6 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         /// <param name="sequence"></param>
         /// <returns></returns>
-        public static IEnumerable<Tuple<T, T>> Cartesian<T>(this IEnumerable<T> sequence)
-        {
-            return sequence.Cartesian(sequence);
-        }
+        public static IEnumerable<Tuple<T, T>> Cartesian<T>(this IEnumerable<T> sequence) => sequence.Cartesian(sequence);
     }
 }

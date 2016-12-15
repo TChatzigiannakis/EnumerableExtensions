@@ -24,7 +24,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> EveryOtherAfterFirst<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             var index = 0;
             return sequence.Where(n => index++ % 2 == 1);
@@ -39,8 +39,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> EveryOtherAfterFirst<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return sequence.Where(predicate).EveryOtherAfterFirst();
         }
