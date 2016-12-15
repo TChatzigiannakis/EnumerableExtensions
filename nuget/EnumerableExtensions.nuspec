@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>EnumerableExtensions</id>
-        <version>2.6</version>
+        <version>3.0</version>
         <title>Enumerable Extensions</title>
         <authors>Theodoros Chatzigiannakis, Nick Wilson</authors>
         <licenseUrl>http://www.mozilla.org/MPL/2.0/</licenseUrl>
