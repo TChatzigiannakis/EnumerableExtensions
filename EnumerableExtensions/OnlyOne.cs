@@ -26,7 +26,10 @@ namespace EnumerableExtensions
 		{
 			if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
-			return sequence.Count() == 1;
+			using (var iterator = sequence.GetEnumerator())
+			{
+				return iterator.MoveNext() && !iterator.MoveNext();
+			}
 		}
 	}
 }
