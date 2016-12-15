@@ -25,8 +25,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static bool IsPermutationOf<T>(this IEnumerable<T> sequence, IEnumerable<T> second)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (second == null) throw new ArgumentNullException("second");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (second == null) throw new ArgumentNullException(nameof(second));
 
             var list1 = sequence.ToList();
             var list2 = second.ToList();

@@ -16,17 +16,17 @@ namespace EnumerableExtensions
 {
     public static partial class EnumerableExtensions
     {
-        /// <summary>
-        /// Checks whether the sequence contains exactly one element.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="sequence"></param>
-        /// <returns></returns>
-        public static bool OnlyOne<T>(this IEnumerable<T> sequence)
-        {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+		/// <summary>
+		/// Checks whether the sequence contains exactly one element.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="sequence"></param>
+		/// <returns></returns>
+		public static bool OnlyOne<T>(this IEnumerable<T> sequence)
+		{
+			if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
-            return sequence.Count() == 1;
-        }
-    }
+			return sequence.Count() == 1;
+		}
+	}
 }

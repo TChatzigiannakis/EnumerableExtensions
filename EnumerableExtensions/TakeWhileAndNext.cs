@@ -25,15 +25,20 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> TakeWhileAndNext<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            foreach (var i in sequence)
-            {
-                yield return i;
-                if (!predicate.Invoke(i))
-                    yield break;
-            }
+	        return TakeWhileAndNextImpl<T>(sequence, predicate);
         }
-    }
+
+	    private static IEnumerable<T> TakeWhileAndNextImpl<T>(IEnumerable<T> sequence, Func<T, bool> predicate)
+	    {
+			foreach (var i in sequence)
+			{
+				yield return i;
+				if (!predicate.Invoke(i))
+					yield break;
+			}
+		}
+	}
 }

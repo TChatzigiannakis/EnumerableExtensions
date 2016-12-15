@@ -25,8 +25,8 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         public static IActionApplyingEnumerable<T> Apply<T>(this IEnumerable<T> sequence, Action<T> action)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (action == null) throw new ArgumentNullException("action");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (action == null) throw new ArgumentNullException(nameof(action));
 
             return new ActionApplyingEnumerable<T>(sequence, action);
         }
@@ -38,7 +38,7 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         public static void ToAll<T>(this IActionApplyingEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             foreach (var a in sequence.Sequence)
                 sequence.Action.Invoke(a);
@@ -51,7 +51,7 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         public static void ToAllExceptLast<T>(this IActionApplyingEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             foreach (var a in sequence.Sequence.ButLast())
                 sequence.Action.Invoke(a);
@@ -65,7 +65,7 @@ namespace EnumerableExtensions
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static void ToAllAndThenApplyToLast<T>(this IActionApplyingEnumerable<T> sequence, Action<T> action)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             var outer = default(T);
             var any = false;
@@ -86,7 +86,7 @@ namespace EnumerableExtensions
         /// <typeparam name="T"></typeparam>
         public static void ToAllWithDifferentLast<T>(this IActionApplyingEnumerable<T> sequence, Action<T> action)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             using (var iterator = sequence.Sequence.GetEnumerator())
             {
@@ -105,8 +105,8 @@ namespace EnumerableExtensions
 
     internal class ActionApplyingEnumerable<T> : IActionApplyingEnumerable<T>
     {
-        public IEnumerable<T> Sequence { get; private set; }
-        public Action<T> Action { get; private set; }
+        public IEnumerable<T> Sequence { get; }
+        public Action<T> Action { get; }
 
         public ActionApplyingEnumerable(IEnumerable<T> sequence, Action<T> action)
         {

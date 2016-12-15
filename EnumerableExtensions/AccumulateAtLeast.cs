@@ -27,231 +27,276 @@ namespace EnumerableExtensions
         /// <typeparam name="TSum"></typeparam>
         public static IEnumerable<T> AccumulateAtLeast<T, TSum>(this IEnumerable<T> sequence, TSum threshold, Func<T, TSum> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(TSum);
-            var iterator = sequence.GetEnumerator();
-            while (sum.OperatorLessThan(threshold))
-            {
-                if (iterator.MoveNext())
-                {
-                    sum = sum.OperatorPlus(selector.Invoke(iterator.Current));
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+	        return AccumulateAtLeastImpl<T, TSum>(sequence, threshold, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, int threshold, Func<T, int> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T, TSum>(IEnumerable<T> sequence, TSum threshold, Func<T, TSum> selector)
+	    {
+			var sum = default(TSum);
+			var iterator = sequence.GetEnumerator();
+			while (sum.OperatorLessThan(threshold))
+			{
+				if (iterator.MoveNext())
+				{
+					sum = sum.OperatorPlus(selector.Invoke(iterator.Current));
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, int threshold, Func<T, int> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(int);
-            var iterator = sequence.GetEnumerator();
-            while (sum < threshold)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-
-            }
+	        return AccumulateAtLeastImpl<T>(sequence, threshold, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, decimal threshold, Func<T, decimal> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, int threshold, Func<T, int> selector)
+	    {
+			var sum = default(int);
+			var iterator = sequence.GetEnumerator();
+			while (sum < threshold)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, decimal threshold, Func<T, decimal> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(decimal);
-            var iterator = sequence.GetEnumerator();
-            while (sum < threshold)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+			return AccumulateAtLeastImpl<T>(sequence, threshold, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, byte threshold, Func<T, byte> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, decimal threshold, Func<T, decimal> selector)
+	    {
+			var sum = default(decimal);
+			var iterator = sequence.GetEnumerator();
+			while (sum < threshold)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, byte threshold, Func<T, byte> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(int);
-            var iterator = sequence.GetEnumerator();
-            while (sum < threshold)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+			return AccumulateAtLeastImpl<T>(sequence, threshold, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, int threshold, Func<T, byte> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, byte threshold, Func<T, byte> selector)
+	    {
+			var sum = default(int);
+			var iterator = sequence.GetEnumerator();
+			while (sum < threshold)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, int threshold, Func<T, byte> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(int);
-            var iterator = sequence.GetEnumerator();
-            while (sum < threshold)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+			return AccumulateAtLeastImpl<T>(sequence, threshold, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="epsilon"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, float threshold, float epsilon, Func<T, float> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, int threshold, Func<T, byte> selector)
+	    {
+			var sum = default(int);
+			var iterator = sequence.GetEnumerator();
+			while (sum < threshold)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="epsilon"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, float threshold, float epsilon, Func<T, float> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(float);
-            var iterator = sequence.GetEnumerator();
-            while (threshold - sum < epsilon)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+			return AccumulateAtLeastImpl<T>(sequence, threshold, epsilon, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, float threshold, Func<T, float> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, float threshold, float epsilon, Func<T, float> selector)
+	    {
+			var sum = default(float);
+			var iterator = sequence.GetEnumerator();
+			while (threshold - sum < epsilon)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, float threshold, Func<T, float> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(decimal);
-            var iterator = sequence.GetEnumerator();
-            while (sum < (decimal)threshold)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += (decimal)selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+			return AccumulateAtLeastImpl<T>(sequence, threshold, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="epsilon"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, double threshold, double epsilon, Func<T, double> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, float threshold, Func<T, float> selector)
+	    {
+			var sum = default(decimal);
+			var iterator = sequence.GetEnumerator();
+			while (sum < (decimal)threshold)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += (decimal)selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="epsilon"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, double threshold, double epsilon, Func<T, double> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(double);
-            var iterator = sequence.GetEnumerator();
-            while (threshold - sum < epsilon)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+			return AccumulateAtLeastImpl<T>(sequence, threshold, epsilon, selector);
         }
 
-        /// <summary>
-        /// Returns elements required to meet a given threshold by accumulating values using a provided selector.
-        /// </summary>
-        /// <returns></returns>
-        /// <param name="sequence"></param>
-        /// <param name="threshold"></param>
-        /// <param name="selector"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, double threshold, Func<T, double> selector)
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, double threshold, double epsilon, Func<T, double> selector)
+	    {
+			var sum = default(double);
+			var iterator = sequence.GetEnumerator();
+			while (threshold - sum < epsilon)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+		/// <summary>
+		/// Returns elements required to meet a given threshold by accumulating values using a provided selector.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="sequence"></param>
+		/// <param name="threshold"></param>
+		/// <param name="selector"></param>
+		/// <typeparam name="T"></typeparam>
+		public static IEnumerable<T> AccumulateAtLeast<T>(this IEnumerable<T> sequence, double threshold, Func<T, double> selector)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (selector == null) throw new ArgumentNullException("selector");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
 
-            var sum = default(decimal);
-            var iterator = sequence.GetEnumerator();
-            while (sum < (decimal)threshold)
-            {
-                if (iterator.MoveNext())
-                {
-                    sum += (decimal)selector.Invoke(iterator.Current);
-                    yield return iterator.Current;
-                }
-                else yield break;
-            }
+			return AccumulateAtLeastImpl<T>(sequence, threshold, selector);
         }
-    }
+
+	    private static IEnumerable<T> AccumulateAtLeastImpl<T>(IEnumerable<T> sequence, double threshold, Func<T, double> selector)
+	    {
+			var sum = default(decimal);
+			var iterator = sequence.GetEnumerator();
+			while (sum < (decimal)threshold)
+			{
+				if (iterator.MoveNext())
+				{
+					sum += (decimal)selector.Invoke(iterator.Current);
+					yield return iterator.Current;
+				}
+				else yield break;
+			}
+		}
+
+	}
 }

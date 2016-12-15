@@ -37,5 +37,5 @@ namespace EnumerableExtensionsTests
 
             Assert.AreEqual(0, seq.AfterFirst(x => x > 2).Count());
         }
-    }
+	}
 }

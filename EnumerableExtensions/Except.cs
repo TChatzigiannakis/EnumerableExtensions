@@ -25,7 +25,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Except<T>(this IEnumerable<T> sequence, T exception)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             // ReSharper disable once CompareNonConstrainedGenericWithNull
             if (default(T) == null) return sequence.Except(x => object.ReferenceEquals(x, null));            
@@ -42,8 +42,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Except<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return sequence.Where(x => !predicate.Invoke(x));
         }
@@ -53,8 +53,8 @@ namespace EnumerableExtensions
         /// </summary>
         public static IEnumerable<T> Except<T>(this IEnumerable<T> sequence, Func<T, int, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return sequence.Where((x, i) => !predicate.Invoke(x, i));
         }

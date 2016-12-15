@@ -25,7 +25,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static ITypeRemovingEnumerable<T> NotOf<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             return new TypeRemovingEnumerable<T>(sequence);
         }
@@ -40,7 +40,8 @@ namespace EnumerableExtensions
             _enumerable = e;
         }
 
-        public IEnumerable<T> Type<TRemove>()
+#pragma warning disable CSE0003 // Use expression-bodied members
+		public IEnumerable<T> Type<TRemove>()
         {
             return _enumerable
                 .Except(x => x is TRemove);
@@ -71,6 +72,7 @@ namespace EnumerableExtensions
                 .Except(x => x.GetType() == typeof(TRemoveA))
                 .Except(x => x.GetType() == typeof(TRemoveB));
         }
+
         public IEnumerable<T> ExactType<TRemoveA, TRemoveB, TRemoveC>()
         {
             return _enumerable
@@ -78,21 +80,13 @@ namespace EnumerableExtensions
                 .Except(x => x.GetType() == typeof (TRemoveB))
                 .Except(x => x.GetType() == typeof (TRemoveC));
         }
+#pragma warning restore CSE0003 // Use expression-bodied members
         
-        public IEnumerable<T> AnyClassType()
-        {
-            return _enumerable.Except(x => x.GetType().IsClass);
-        }
+        public IEnumerable<T> AnyClassType() => _enumerable.Except(x => x.GetType().IsClass);
 
-        public IEnumerable<T> AnyStructType()
-        {
-            return _enumerable.Except(x => x.GetType().IsValueType);
-        }
+	    public IEnumerable<T> AnyStructType() => _enumerable.Except(x => x.GetType().IsValueType);
 
-        public IEnumerable<T> AnyEnumType()
-        {
-            return _enumerable.Except(x => x.GetType().IsEnum);
-        }
+	    public IEnumerable<T> AnyEnumType() => _enumerable.Except(x => x.GetType().IsEnum);
     }
 
     /// <summary>

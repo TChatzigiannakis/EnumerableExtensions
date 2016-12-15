@@ -24,7 +24,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> LastOrEmpty<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             if (sequence.Any())
                 return new T[] { sequence.Last() };
@@ -41,8 +41,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> LastOrEmpty<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return sequence.Where(predicate).LastOrEmpty();
         }

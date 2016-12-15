@@ -26,7 +26,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Paginate<T>(this IEnumerable<T> sequence, int skipCount, int takeCount)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             return sequence.Skip(skipCount).Take(takeCount);
         }
@@ -40,22 +40,27 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<IEnumerable<T>> Paginate<T>(this IEnumerable<T> sequence, int pageLength)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
-            using (var iterator = sequence.GetEnumerator())
-            {
-                var list = new List<T>();
-                while (iterator.MoveNext())
-                {
-                    list.Add(iterator.Current);
-                    if (list.Count != pageLength) continue;
-
-                    yield return list;
-                    list = new List<T>();
-                }
-                if (list.Any()) 
-                    yield return list;
-            }
+	        return PaginateImpl<T>(sequence, pageLength);
         }
-    }
+
+	    private static IEnumerable<IEnumerable<T>> PaginateImpl<T>(IEnumerable<T> sequence, int pageLength)
+	    {
+			using (var iterator = sequence.GetEnumerator())
+			{
+				var list = new List<T>();
+				while (iterator.MoveNext())
+				{
+					list.Add(iterator.Current);
+					if (list.Count != pageLength) continue;
+
+					yield return list;
+					list = new List<T>();
+				}
+				if (list.Any())
+					yield return list;
+			}
+		}
+	}
 }

@@ -30,5 +30,12 @@ namespace EnumerableExtensionsTests
             Assert.AreEqual(2, seq[1]);
             Assert.AreEqual(3, seq[2]);
         }
+
+	    [Test]
+	    public void TakeWhileAndNextNull()
+	    {
+			Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>)null).TakeWhileAndNext(x => x < 3); });
+			Assert.Throws<ArgumentNullException>(() => { new[] { 1, 2, 3, 4, 5 }.TakeWhileAndNext((Func<int, bool>)null); });
+		}
     }
 }

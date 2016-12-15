@@ -24,7 +24,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             var list = sequence.ToList();
             var seq = RandomSequence(0, list.Count());

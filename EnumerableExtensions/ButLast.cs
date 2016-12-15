@@ -24,18 +24,23 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> ButLast<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
-            using (var iterator = sequence.GetEnumerator())
-            {
-                if (!iterator.MoveNext()) yield break;
-                var previous = iterator.Current;
-                while (iterator.MoveNext())
-                {
-                    yield return previous;
-                    previous = iterator.Current;
-                }
-            }
+	        return ButLastImpl<T>(sequence);
         }
-    }
+
+	    private static IEnumerable<T> ButLastImpl<T>(IEnumerable<T> sequence)
+	    {
+			using (var iterator = sequence.GetEnumerator())
+			{
+				if (!iterator.MoveNext()) yield break;
+				var previous = iterator.Current;
+				while (iterator.MoveNext())
+				{
+					yield return previous;
+					previous = iterator.Current;
+				}
+			}
+		}
+	}
 }

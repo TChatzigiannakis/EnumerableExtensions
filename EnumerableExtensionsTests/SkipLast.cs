@@ -30,5 +30,11 @@ namespace EnumerableExtensionsTests
             Assert.IsTrue(skipped.SequenceEqual(new[] {1, 2, 3, 4, 5, 6}));
             Assert.IsFalse(skippedTooMany.Any());
         }
+
+	    [Test]
+	    public void SkipLastNull()
+	    {
+		    Assert.Throws<ArgumentNullException>(() => { ((IEnumerable<int>) null).SkipLast(3); });
+	    }
     }
 }

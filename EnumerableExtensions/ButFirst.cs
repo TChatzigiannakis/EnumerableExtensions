@@ -24,7 +24,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> ButFirst<T>(this IEnumerable<T> sequence)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             return sequence.Skip(1);
         }

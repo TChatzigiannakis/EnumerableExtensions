@@ -28,8 +28,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static bool SequenceEqual<T1, T2>(this IEnumerable<T1> sequence, IEnumerable<T2> second, Func<T1, T2, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (second == null) throw new ArgumentNullException("second");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (second == null) throw new ArgumentNullException(nameof(second));
 
             var iterator1 = sequence.GetEnumerator();
             var iterator2 = second.GetEnumerator();
@@ -58,9 +58,6 @@ namespace EnumerableExtensions
         /// <param name="predicate"></param>
         /// <returns></returns>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public static bool MapsTo<T1, T2>(this IEnumerable<T1> items, IEnumerable<T2> other, Func<T1, T2, bool> predicate)
-        {
-            return items.SequenceEqual(other, predicate);
-        }
+        public static bool MapsTo<T1, T2>(this IEnumerable<T1> items, IEnumerable<T2> other, Func<T1, T2, bool> predicate) => items.SequenceEqual(other, predicate);
     }
 }

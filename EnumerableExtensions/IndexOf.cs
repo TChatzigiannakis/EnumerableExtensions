@@ -25,7 +25,7 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static int IndexOf<T>(this IEnumerable<T> sequence, T key)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
 
             var index = 0;
             foreach (var e in sequence)

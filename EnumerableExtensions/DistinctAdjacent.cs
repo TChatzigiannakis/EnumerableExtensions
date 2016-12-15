@@ -37,27 +37,32 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> DistinctAdjacent<T>(this IEnumerable<T> sequence, Func<T, T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            using (var iterator = sequence.GetEnumerator())
-            {
-                T previous;
-                if (iterator.MoveNext())
-                {
-                    previous = iterator.Current;
-                    yield return previous;
-                }
-                else yield break;
-                
-                while (iterator.MoveNext())
-                {
-                    var current = iterator.Current;
-                    if (predicate(current, previous)) continue;
-                    yield return current;
-                    previous = current;
-                }
-            }
+	        return DistinctAdjacentImpl<T>(sequence, predicate);
         }
-    }
+
+	    private static IEnumerable<T> DistinctAdjacentImpl<T>(IEnumerable<T> sequence, Func<T, T, bool> predicate)
+	    {
+			using (var iterator = sequence.GetEnumerator())
+			{
+				T previous;
+				if (iterator.MoveNext())
+				{
+					previous = iterator.Current;
+					yield return previous;
+				}
+				else yield break;
+
+				while (iterator.MoveNext())
+				{
+					var current = iterator.Current;
+					if (predicate(current, previous)) continue;
+					yield return current;
+					previous = current;
+				}
+			}
+		}
+	}
 }

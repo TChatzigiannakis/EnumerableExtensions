@@ -26,8 +26,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Distinct<T>(this IEnumerable<T> sequence, Func<T, T, bool> predicate, Func<T, int> hashCodeFunction)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             return sequence.Distinct(new DistinctEqualityComparer<T>(predicate, hashCodeFunction));
         }
@@ -41,28 +41,34 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static IEnumerable<T> Distinct<T>(this IEnumerable<T> sequence, Func<T, T, bool> predicate)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (predicate == null) throw new ArgumentNullException("predicate");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            using (var iterator = sequence.GetEnumerator())
-            {
-                var list = new List<T>();
-                while (iterator.MoveNext())
-                {
-                    if (list.Any(x => predicate.Invoke(x, iterator.Current))) 
-                        continue;
-
-                    list.Add(iterator.Current);
-                    yield return iterator.Current;
-                }
-            }
+	        return DistinctImpl<T>(sequence, predicate);
         }
-    }
+
+	    private static IEnumerable<T> DistinctImpl<T>(IEnumerable<T> sequence, Func<T, T, bool> predicate)
+	    {
+			using (var iterator = sequence.GetEnumerator())
+			{
+				var list = new List<T>();
+				while (iterator.MoveNext())
+				{
+					if (list.Any(x => predicate.Invoke(x, iterator.Current)))
+						continue;
+
+					list.Add(iterator.Current);
+					yield return iterator.Current;
+				}
+			}
+		}
+
+	}
 
     internal class DistinctEqualityComparer<T> : IEqualityComparer<T>
     {
-        public Func<T, T, bool> EqualityPredicate { get; private set; }
-        public Func<T, int> HashCodeFunction { get; private set; }
+        public Func<T, T, bool> EqualityPredicate { get; }
+        public Func<T, int> HashCodeFunction { get; }
 
         public DistinctEqualityComparer(Func<T, T, bool> equality, Func<T, int> hashCode)
         {
@@ -70,13 +76,8 @@ namespace EnumerableExtensions
             HashCodeFunction = hashCode;
         }
 
-        public bool Equals(T x, T y)
-        {
-            return EqualityPredicate.Invoke(x, y);
-        }
-        public int GetHashCode(T obj)
-        {
-            return HashCodeFunction.Invoke(obj);
-        }
+        public bool Equals(T x, T y) => EqualityPredicate.Invoke(x, y);
+
+	    public int GetHashCode(T obj) => HashCodeFunction.Invoke(obj);
     }
 }

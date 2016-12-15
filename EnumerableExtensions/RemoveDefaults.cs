@@ -21,24 +21,18 @@ namespace EnumerableExtensions
         /// <returns></returns>
         /// <param name="sequence"></param>
         /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> RemoveDefaults<T>(this IEnumerable<T> sequence) 
-        {
-            if(typeof(T).IsValueType) return sequence.Except (x => x.Equals (default(T)));
-            return RemoveNull<T> (sequence);
-        }
+        public static IEnumerable<T> RemoveDefaults<T>(this IEnumerable<T> sequence) => typeof(T).IsValueType ? sequence.Except(x => x.Equals (default(T))) : RemoveNull<T> (sequence);
 
-        /// <summary>
+	    /// <summary>
         /// Filters out all null instances from the given sequence.
         /// </summary>
         /// <returns></returns>
         /// <param name="sequence"></param>
         /// <typeparam name="T"></typeparam>
-        public static IEnumerable<T> RemoveNull<T>(this IEnumerable<T> sequence) 
-        {
-            return sequence.Except (x => object.ReferenceEquals(x, null));
-        }
+        public static IEnumerable<T> RemoveNull<T>(this IEnumerable<T> sequence) => sequence.Except(x => object.ReferenceEquals(x, null));
 
-        /// <summary>
+#pragma warning disable CSE0003 // Use expression-bodied members
+	    /// <summary>
         /// Filters out all instances equal to the default value of their own individual type.
         /// </summary>
         /// <returns></returns>
@@ -52,6 +46,7 @@ namespace EnumerableExtensions
                 return x.Equals(Activator.CreateInstance(x.GetType()));
             });
         }
+#pragma warning restore CSE0003 // Use expression-bodied members
     }
 }
 

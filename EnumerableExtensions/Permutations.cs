@@ -26,24 +26,28 @@ namespace EnumerableExtensions
         {
             if (sequence == null) throw new ArgumentNullException();
 
-            var list = sequence.ToList();
-
-            if (list.IsEmpty())
-                yield return list;
-            else
-            {
-                var index = 0;
-                foreach (var head in list)
-                {
-                    var indexInClosure = index;
-                    var rest = list.Except((x, i) => indexInClosure == i);
-                    var permutationsOfRest = rest.Permutations();
-                    foreach (var permutation in permutationsOfRest)
-                        yield return head.ToUnarySequence().Concat(permutation);
-                    index++;
-                }
-            }
+            return PermutationsImpl<T>(sequence);
         }
 
-    }
+	    private static IEnumerable<IEnumerable<T>> PermutationsImpl<T>(IEnumerable<T> sequence)
+	    {
+			var list = sequence.ToList();
+
+			if (list.IsEmpty())
+				yield return list;
+			else
+			{
+				var index = 0;
+				foreach (var head in list)
+				{
+					var indexInClosure = index;
+					var rest = list.Except((x, i) => indexInClosure == i);
+					var permutationsOfRest = rest.Permutations();
+					foreach (var permutation in permutationsOfRest)
+						yield return head.ToUnarySequence().Concat(permutation);
+					index++;
+				}
+			}
+		}
+	}
 }

@@ -27,8 +27,8 @@ namespace EnumerableExtensions
         /// <returns></returns>
         public static TResult Corresponding<T, TResult>(this IEnumerable<T> sequence, T key, IEnumerable<TResult> second)
         {
-            if (sequence == null) throw new ArgumentNullException("sequence");
-            if (second == null) throw new ArgumentNullException("second");
+            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            if (second == null) throw new ArgumentNullException(nameof(second));
 
             var index = sequence.IndexOf(key);
             return second.ElementAt(index);
