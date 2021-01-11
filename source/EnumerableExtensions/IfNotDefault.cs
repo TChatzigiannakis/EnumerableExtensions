@@ -10,7 +10,11 @@
 namespace EnumerableExtensions
 {
     using System;
+    using System.Collections.Generic;
 
+    /// <summary>
+    /// Extension methods supported by <see cref="IEnumerable{T}"/>.
+    /// </summary>
     public static partial class EnumerableExtensions
     {
         /// <summary>
@@ -21,7 +25,8 @@ namespace EnumerableExtensions
             Action<T> action)
             where T : class
         {
-                action?.Invoke(item) ?? throw new ArgumentNullException(nameof(action));
+            _ = action ?? throw new ArgumentNullException(nameof(action));
+            action.Invoke(item);
         }
     }
 }

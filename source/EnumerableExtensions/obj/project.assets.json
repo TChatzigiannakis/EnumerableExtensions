@@ -204,7 +204,7 @@
     "C:\\Users\\sethj\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.1.0",
     "restore": {
       "projectUniqueName": "E:\\Canon\\git\\EnumerableExtensions\\source\\EnumerableExtensions\\EnumerableExtensions.csproj",
       "projectName": "EnumerableExtensions",
@@ -231,6 +231,7 @@
         }
       },
       "warningProperties": {
+        "allWarningsAsErrors": true,
         "warnAsError": [
           "NU1605"
         ]

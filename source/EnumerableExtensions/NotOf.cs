@@ -13,6 +13,9 @@ namespace EnumerableExtensions
     using System.Collections.Generic;
     using System.ComponentModel;
 
+    /// <summary>
+    /// Extension methods supported by <see cref="IEnumerable{T}"/>.
+    /// </summary>
     public static partial class EnumerableExtensions
     {
         /// <summary>
@@ -29,10 +32,7 @@ namespace EnumerableExtensions
     {
         private readonly IEnumerable<T> _enumerable;
 
-        public TypeRemovingEnumerable(IEnumerable<T> e)
-        {
-            _enumerable = e;
-        }
+        public TypeRemovingEnumerable(IEnumerable<T> e) => _enumerable = e;
 
         public IEnumerable<T> Type<TRemove>() =>
             _enumerable

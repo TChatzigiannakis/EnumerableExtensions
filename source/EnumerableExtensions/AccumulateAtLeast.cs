@@ -12,6 +12,9 @@ namespace EnumerableExtensions
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Extension methods supported by <see cref="IEnumerable{T}"/>.
+    /// </summary>
     public static partial class EnumerableExtensions
     {
         #region [Interface]

@@ -28,7 +28,7 @@ namespace EnumerableExtensions
 
         public static bool OperatorGreaterThan<T>(
             this T operand1,
-            T operand2) => 
+            T operand2) =>
             typeof(T) == typeof(int)
                 ? (int)(object)operand1 > (int)(object)operand2
                 : (bool)typeof(T)

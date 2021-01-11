@@ -7,32 +7,33 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace EnumerableExtensions
 {
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Extension methods supported by <see cref="IEnumerable{T}"/>.
+    /// </summary>
     public static partial class EnumerableExtensions
     {
         /// <summary>
         /// Returns the index of the given item in the enumerable.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="sequence"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static int IndexOf<T>(this IEnumerable<T> sequence, T key)
+        public static int IndexOf<T>(
+            this IEnumerable<T> sequence,
+            T key)
         {
-            if (sequence == null) throw new ArgumentNullException(nameof(sequence));
+            _ = sequence ?? throw new ArgumentNullException(nameof(sequence));
 
             var index = 0;
             foreach (var e in sequence)
+            {
                 if (!e.Equals(key))
                     index++;
                 else
                     return index;
+            }
 
             throw new KeyNotFoundException();
         }

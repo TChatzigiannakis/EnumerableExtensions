@@ -13,6 +13,9 @@ namespace EnumerableExtensions
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Extension methods supported by <see cref="IEnumerable{T}"/>.
+    /// </summary>
     public static partial class EnumerableExtensions
     {
         /// <summary>
@@ -49,17 +52,17 @@ namespace EnumerableExtensions
         {
             using var iterator = sequence.GetEnumerator();
 
-                var list = new List<T>();
-                while (iterator.MoveNext())
-                {
-                    list.Add(iterator.Current);
-                    if (list.Count != pageLength) continue;
+            var list = new List<T>();
+            while (iterator.MoveNext())
+            {
+                list.Add(iterator.Current);
+                if (list.Count != pageLength) continue;
 
-                    yield return list;
-                    list = new List<T>();
-                }
-                if (list.Any())
-                    yield return list;
+                yield return list;
+                list = new List<T>();
+            }
+            if (list.Any())
+                yield return list;
         }
     }
 }
