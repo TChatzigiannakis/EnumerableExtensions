@@ -21,11 +21,11 @@ namespace EnumerableExtensionsTests
         {
             var data = new[] { 1, 2, 3, 4, 5 }.Enumerate();
 
-            var lastThree = data.TakeLast(3);
-            Assert.IsTrue(lastThree.SequenceEqual(new[] { 3, 4, 5 }));
+            var lastThree = data.TakeLast(3).Enumerate();
+            Assert.IsTrue(lastThree.SequenceEqual(new[] { 3, 4, 5 }.Enumerate(), (f, s) => f == s));
 
             var lastSix = data.TakeLast(6);
-            Assert.IsTrue(lastSix.SequenceEqual(data));
+            Assert.IsTrue(lastSix.SequenceEqual(data, (f, s) => f == s));
         }
     }
 }
