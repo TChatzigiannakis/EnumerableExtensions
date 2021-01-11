@@ -1,0 +1,27 @@
+﻿<Project>
+  <Import Project="../directory.build.props"/>
+
+  <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
+    <OutputPath>$(SolutionDir)tests\Output\$(Configuration)</OutputPath>
+    <DocumentationFile>$(SolutionDir)tests\Output\$(Configuration)\(MSBuildProjectName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.14.0" />
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.14.0" />
+    <PackageReference Include="AutoFixture.Idioms" Version="4.14.0" />
+    <PackageReference Include="Moq" Version="4.15.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+</Project>

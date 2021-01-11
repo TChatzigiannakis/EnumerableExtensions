@@ -1,0 +1,11 @@
+﻿<Project>
+  <Import Project="../directory.build.props"/>
+
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)source\Output\$(Configuration)</OutputPath>
+    <DocumentationFile>$(SolutionDir)source\Output\$(Configuration)\(MSBuildProjectName).xml</DocumentationFile>
+    <CLSCompliance>true</CLSCompliance>
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+
+</Project>

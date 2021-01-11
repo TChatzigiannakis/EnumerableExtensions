@@ -7,18 +7,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using EnumerableExtensions;
-
 namespace EnumerableExtensionsTests
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using NUnit.Framework;
+    using EnumerableExtensions;
+
     [TestFixture]
     [SuppressMessage("ReSharper", "IteratorMethodResultIsIgnored")]
     class AccumulateAtLeast

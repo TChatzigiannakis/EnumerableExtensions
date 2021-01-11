@@ -10,7 +10,6 @@
 ### How do I get set up? ###
 
 * Clone this repository.
-* Open the solution file using a version of Visual Studio that supports the PCL project type (2013 Ultimate, for example) or using Xamarin Studio (free from the MonoDevelop website).
 * Fetch latest NuGet packages by running `nuget restore` (if your environment doesn't fetch them automatically).
 * Build Solution.
 
