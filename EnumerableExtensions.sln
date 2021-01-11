@@ -17,12 +17,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumerableExtensions", "sou
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{2E0F73A7-6E49-45F6-B206-9EA270B92DF5}"
 	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 		directory.build.props = directory.build.props
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerableExtensions.Test", "tests\EnumerableExtensions.Test\EnumerableExtensions.Test.csproj", "{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumerableExtensions.Test", "tests\EnumerableExtensions.Test\EnumerableExtensions.Test.csproj", "{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
