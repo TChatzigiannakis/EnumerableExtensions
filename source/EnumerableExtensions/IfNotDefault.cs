@@ -25,8 +25,10 @@ namespace EnumerableExtensions
             Action<T> action)
             where T : class
         {
-            _ = action ?? throw new ArgumentNullException(nameof(action));
-            action.Invoke(item);
+            if (item != default)
+            {
+                action.Invoke(item);
+            }
         }
     }
 }
