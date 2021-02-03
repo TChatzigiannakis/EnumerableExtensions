@@ -1,11 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerableExtensions", "EnumerableExtensions\EnumerableExtensions.csproj", "{4DAD4350-582C-40ED-BC86-4167105B41AE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{EABD7E49-12FF-489A-810A-13D7E92CB895}"
+	ProjectSection(SolutionItems) = preProject
+		source\directory.build.props = source\directory.build.props
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerableExtensionsTests", "EnumerableExtensionsTests\EnumerableExtensionsTests.csproj", "{1BC22940-2E8B-40CF-9FA9-2AD2FCA13A76}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{89FB079E-DC11-4238-8FA4-E829B87C61CF}"
+	ProjectSection(SolutionItems) = preProject
+		tests\directory.build.props = tests\directory.build.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumerableExtensions", "source\EnumerableExtensions\EnumerableExtensions.csproj", "{2347E7E6-1583-4BC5-8261-BA2F1D031565}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{2E0F73A7-6E49-45F6-B206-9EA270B92DF5}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		directory.build.props = directory.build.props
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnumerableExtensions.Test", "tests\EnumerableExtensions.Test\EnumerableExtensions.Test.csproj", "{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +32,24 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4DAD4350-582C-40ED-BC86-4167105B41AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DAD4350-582C-40ED-BC86-4167105B41AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DAD4350-582C-40ED-BC86-4167105B41AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DAD4350-582C-40ED-BC86-4167105B41AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BC22940-2E8B-40CF-9FA9-2AD2FCA13A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BC22940-2E8B-40CF-9FA9-2AD2FCA13A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BC22940-2E8B-40CF-9FA9-2AD2FCA13A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BC22940-2E8B-40CF-9FA9-2AD2FCA13A76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2347E7E6-1583-4BC5-8261-BA2F1D031565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2347E7E6-1583-4BC5-8261-BA2F1D031565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2347E7E6-1583-4BC5-8261-BA2F1D031565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2347E7E6-1583-4BC5-8261-BA2F1D031565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2347E7E6-1583-4BC5-8261-BA2F1D031565} = {EABD7E49-12FF-489A-810A-13D7E92CB895}
+		{C4A5F6E9-D96C-4281-8332-24CA7CD5E7B4} = {89FB079E-DC11-4238-8FA4-E829B87C61CF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4ACB28D1-DC69-450C-888A-81868E863B40}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = EnumerableExtensionsManualTests\EnumerableExtensionsManualTests.csproj
